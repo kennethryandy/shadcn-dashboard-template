@@ -1,7 +1,7 @@
 "use client";
-import { useCallback, useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Header from "./header";
-import { useBoolean } from "@/hooks";
+import { useBoolean, useEventListener } from "@/hooks";
 import NavVertical from "./nav-vertical";
 import Main from "./main";
 
@@ -16,18 +16,15 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
 	const offset = useBoolean(false);
 
-	const onScroll = useCallback(() => {
+	const onScroll = () => {
 		if (window.scrollY > 100) {
 			offset.onTrue();
 		} else {
 			offset.onFalse();
 		}
-	}, [offset]);
+	};
 
-	useEffect(() => {
-		window.addEventListener("scroll", onScroll);
-		return () => window.removeEventListener("scroll", onScroll);
-	}, [onScroll]);
+	useEventListener("scroll", onScroll);
 
 	const renderNavVertical = <NavVertical navExpanded={expanded.value} onNavToggle={expanded.onToggle} offset={offset.value} />;
 
