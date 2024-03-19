@@ -25,7 +25,7 @@ export default function NavVertical({ navExpanded, onNavToggle, offset }: INavVe
 	);
 
 	return (
-		<div className={cn("transition-all h-screen z-20", navExpanded ? "w-72" : "w-24")}>
+		<div className={cn("transition-all h-screen z-20", navExpanded ? "min-w-72 w-72" : "min-w-24 w-24")}>
 			<Button
 				variant="outline"
 				size="icon"

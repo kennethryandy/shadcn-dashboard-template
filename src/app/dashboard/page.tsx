@@ -1,9 +1,11 @@
+import { Container } from "@/components/reusable";
+
 // ----------------------------------------------------------------------
 
 export default function PageDashboard() {
-  return (
-    <div>
-      <h1>hello</h1>
-    </div>
-  );
+	return (
+		<Container>
+			<h1>hello</h1>
+		</Container>
+	);
 }
