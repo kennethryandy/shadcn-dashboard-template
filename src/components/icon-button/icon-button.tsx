@@ -10,7 +10,7 @@ const iconButtonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "text-gray-600 hover:bg-gray-600/10",
+				default: "text-foreground hover:bg-foreground/10",
 				primary: "text-primary hover:bg-primary/10",
 				secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
 				destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",

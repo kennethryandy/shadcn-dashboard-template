@@ -20,7 +20,7 @@ function EmptyContent({ title = "No Data", imgUrl, action, description, classNam
 	return (
 		<div
 			className={cn(
-				"flex flex-grow items-center flex-col justify-center px-6 h-96 rounded-xl bg-gray-600/5 border-dashed border-gray-600/80",
+				"flex flex-grow items-center flex-col justify-center px-6 h-96 rounded-xl bg-foreground/5 border-dashed border-gray-600/80",
 				className,
 			)}>
 			<Image

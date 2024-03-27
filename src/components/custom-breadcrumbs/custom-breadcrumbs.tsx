@@ -42,17 +42,15 @@ export default function CustomBreadcrumbs({ heading, action, links, moreLink, ac
 												{link.name}
 											</BreadcrumbLink>
 										) : (
-											<BreadcrumbPage className="text-gray-600 cursor-default font-medium">
+											<BreadcrumbPage className="cursor-default font-medium opacity-50">
 												{link.name}
 											</BreadcrumbPage>
 										)}
 									</BreadcrumbItem>
 									{idx !== links.length - 1 && (
-										<BreadcrumbItem className="cursor-default">
-											<BreadcrumbSeparator>
-												<span className="block h-1 w-1 rounded-full bg-gray-600"></span>
-											</BreadcrumbSeparator>
-										</BreadcrumbItem>
+										<BreadcrumbSeparator>
+											<span className="block h-1 w-1 rounded-full bg-foreground"></span>
+										</BreadcrumbSeparator>
 									)}
 								</Fragment>
 							))}
