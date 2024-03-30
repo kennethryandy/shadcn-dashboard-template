@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 transition-colors",
 	{
 		variants: {
 			variant: {
@@ -17,7 +17,7 @@ const buttonVariants = cva(
 				outlined: "",
 			},
 			color: {
-				default: "text-accent-foreground",
+				default: "text-foreground",
 				primary: "",
 				secondary: "",
 				info: "",
@@ -37,18 +37,18 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "default",
-				className: "text-accent-foreground bg-accent hover:bg-[#cececf]",
+				className: "text-foreground bg-accent hover:bg-[#cececf] dark:bg-accent/10",
 			},
 			{
 				variant: "outlined",
 				color: "default",
 				className:
-					"text-accent-foreground border-accent border hover:bg-[#cececf] hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+					"text-foreground border-accent border hover:border-[#cececf] hover:bg-[#cececf] hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
 			},
 			{
 				variant: "ghost",
 				color: "default",
-				className: "dark:hover:bg-accent/10 hover:bg-accent hover:text-accent-foreground",
+				className: "dark:hover:bg-accent/10 hover:bg-accent hover:text-foreground",
 			},
 			{
 				variant: "link",
@@ -59,7 +59,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "primary",
-				className: "text-white dark:text-accent-foreground bg-primary hover:bg-primary-dark",
+				className: "text-white dark:text-foreground bg-primary hover:bg-primary-dark",
 			},
 			{
 				variant: "outlined",
@@ -80,7 +80,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "secondary",
-				className: "text-white dark:text-accent-foreground bg-secondary hover:bg-secondary-dark",
+				className: "text-white dark:text-foreground bg-secondary hover:bg-secondary-dark",
 			},
 			{
 				variant: "outlined",
@@ -102,7 +102,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "info",
-				className: "text-white dark:text-accent-foreground bg-info hover:bg-info-dark",
+				className: "text-white dark:text-foreground bg-info hover:bg-info-dark",
 			},
 			{
 				variant: "outlined",
@@ -123,7 +123,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "success",
-				className: "text-white dark:text-accent-foreground bg-success hover:bg-success-dark",
+				className: "text-white dark:text-foreground bg-success hover:bg-success-dark",
 			},
 			{
 				variant: "outlined",
@@ -144,7 +144,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "warning",
-				className: "text-white dark:text-accent-foreground bg-warning hover:bg-warning-dark",
+				className: "text-white dark:text-foreground bg-warning hover:bg-warning-dark",
 			},
 			{
 				variant: "outlined",
@@ -165,7 +165,7 @@ const buttonVariants = cva(
 			{
 				variant: "contained",
 				color: "error",
-				className: "text-white dark:text-accent-foreground bg-error hover:bg-error-dark",
+				className: "text-white dark:text-foreground bg-error hover:bg-error-dark",
 			},
 			{
 				variant: "outlined",

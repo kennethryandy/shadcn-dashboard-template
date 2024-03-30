@@ -20,7 +20,7 @@ export default function Image({ className, alt = "Image", ratio = "4/3", imagePr
 		<AspectRatio
 			ratio={r}
 			className={cn(
-				"relative overflow-hidden align-bottom inline-block before:content-[''] before:top-0 before:left-0 before:w-1 before:h-1 before:z-[1] before:absolute before:bg-gray-600/5",
+				"relative overflow-hidden align-bottom inline-block before:content-[''] before:top-0 before:left-0 before:w-1 before:h-1 before:z-[1] before:absolute before:bg-foreground/5",
 				className,
 			)}>
 			<NextImage

@@ -11,9 +11,9 @@ interface ILogoProps {
 
 export default function Logo({ className }: ILogoProps) {
 	const logo = (
-		<div className={cn("inline-flex h-14 w-14", className)}>
+		<span className={cn("inline-flex h-14 w-14", className)}>
 			<LogoSvg />
-		</div>
+		</span>
 	);
 	return (
 		<Link href="/" className="contents m-0">

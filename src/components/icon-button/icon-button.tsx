@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // ----------------------------------------------------------------------
 
 const iconButtonVariants = cva(
-	"inline-flex items-center justify-center relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors transition-transform hover:scale-105 hover:translate-z-[0px] [&>svg]:font-inherit",
+	"inline-flex items-center justify-center relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors transition-transform hover:scale-105 hover:translate-z-[0px] [&>svg]:text-font-inherit",
 	{
 		variants: {
 			variant: {
@@ -19,9 +19,9 @@ const iconButtonVariants = cva(
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
-				sm: "p-1 text-lg max-w-8 max-h-8",
-				md: "p-2 text-2xl max-w-10 max-h-10",
-				lg: "p-3 text-3xl max-w-14 max-h-14",
+				sm: "p-1 text-lg w-8 max-w-8 h-8 max-h-8",
+				md: "p-2 text-2xl w-10 max-w-10 h-10 max-h-10",
+				lg: "p-3 text-3xl w-14 max-w-14 h-14 max-h-14",
 			},
 		},
 		defaultVariants: {

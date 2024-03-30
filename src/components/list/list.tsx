@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
 import * as React from "react";
 
 // ----------------------------------------------------------------------
@@ -31,7 +30,7 @@ interface ListSubheaderProps extends React.ButtonHTMLAttributes<HTMLLIElement> {
 const ListSubheader = ({ children, className, disablePadding = false, disableSticky = false }: ListSubheaderProps) => {
 	return (
 		<li
-			className={cn("list-none box-border leading-[48px] appearance-none text-gray-600 font-medium px-4 top-0 z-10", className, {
+			className={cn("list-none box-border leading-[48px] appearance-none font-medium px-4 top-0 z-10", className, {
 				"px-0": disablePadding,
 				sticky: !disableSticky,
 			})}>
@@ -69,7 +68,7 @@ const ListItemButton = ({ children, className, disablePadding, component = "butt
 	return (
 		<Comp
 			className={cn(
-				"border-0 appearance-none outline-0 text-inherit select-none flex flex-grow align-middle cursor-pointer items-center no-underline min-w-0 box-border text-left transition-colors justify-start px-4 py-2 hover:bg-gray-400/10",
+				"border-0 appearance-none outline-0 text-inherit select-none flex flex-grow align-middle cursor-pointer items-center no-underline min-w-0 box-border text-left transition-colors justify-start px-4 py-2 hover:bg-foreground/10",
 				className,
 				{
 					"p-0": disablePadding,

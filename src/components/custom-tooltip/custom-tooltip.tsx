@@ -18,7 +18,10 @@ const CustomTooltip = forwardRef<ElementRef<typeof TooltipContent>, CustomToolti
 				<Tooltip>
 					<TooltipTrigger asChild>{children}</TooltipTrigger>
 					<TooltipPortal>
-						<TooltipContent className={cn("bg-gray-800 dark:bg-gray-700 text-white", className)} ref={ref} {...props}>
+						<TooltipContent
+							className={cn("bg-gray-800 dark:bg-gray-700 text-white data-[state=instant-open]:hidden", className)}
+							ref={ref}
+							{...props}>
 							<p className="text-xs text-inherit">{title}</p>
 							{arrow && <TooltipArrow className="fill-gray-800 -mt-[0.8px] dark:fill-gray-700" />}
 						</TooltipContent>
