@@ -1,9 +1,12 @@
 "use client";
 import { type ReactNode } from "react";
 import Header from "./header";
-import { useBoolean, useEventListener } from "@/hooks";
-import NavVertical from "./nav-vertical";
+import NavVertical from "./nav-section/vertical";
 import Main from "./main";
+import { useNavData } from "@/theme/configs/dashboard/navigations";
+import NavHorizontal from "./nav-section/horizontal";
+import { useSettings } from "@/components/settings/store";
+import SplashScreen from "@/components/loading/splash-screen";
 
 // ----------------------------------------------------------------------
 
@@ -12,29 +15,39 @@ interface DashboardLayoutProps {
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-	const expanded = useBoolean(true);
+	const themeLayout = useSettings((state) => state.themeLayout);
 
-	const offset = useBoolean(false);
+	const navData = useNavData();
 
-	const onScroll = () => {
-		if (window.scrollY > 100) {
-			offset.onTrue();
-		} else {
-			offset.onFalse();
-		}
-	};
+	const isHorizontal = themeLayout === "horizontal";
 
-	useEventListener("scroll", onScroll);
+	// if (!settings._hasHydrated) {
+	// 	return (
+	// 		<div>
+	// 			<Header offset={true} navExpanded={false} navData={navData} className="md:w-full" showLogo />
 
-	const renderNavVertical = <NavVertical navExpanded={expanded.value} onNavToggle={expanded.onToggle} offset={offset.value} />;
+	// 			<Main classname="pt-40 pb-32 lg:pt-40">{children}</Main>
+	// 		</div>
+	// 	);
+	// }
+
+	if (isHorizontal) {
+		return (
+			<>
+				<Header offset={true} navExpanded={false} navData={navData} className="md:w-full" showLogo />
+
+				<NavHorizontal navData={navData} />
+
+				<Main classname="pt-40 pb-32 lg:pt-40">{children}</Main>
+			</>
+		);
+	}
 
 	return (
 		<div className="h-full flex">
-			<Header navExpanded={expanded.value} offset={offset.value} />
-			<div className="min-h-full w-full flex flex-col sm:flex-row h-[200vh]">
-				{renderNavVertical}
-				<Main navExpanded={expanded.value}>{children}</Main>
-			</div>
+			<NavVertical navData={navData} themeLayout={themeLayout}>
+				{children}
+			</NavVertical>
 		</div>
 	);
 }

@@ -32,7 +32,7 @@ const config = {
 		screens: defaultTheme.screens,
 		extend: {
 			fontSize: {
-				inherit: "inherit",
+				"font-inherit": "inherit",
 			},
 			backgroundSize: {
 				full: "100%",

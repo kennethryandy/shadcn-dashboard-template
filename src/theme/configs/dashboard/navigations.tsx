@@ -39,7 +39,23 @@ const ICONS = {
 
 // ----------------------------------------------------------------------
 
-export const useNavData = (): INavData =>
+export type TMenuItem = {
+	title: string;
+	path?: string;
+	icon?: JSX.Element;
+	info?: JSX.Element;
+	disabled?: boolean;
+	caption?: string;
+	children?: TMenuItem[] | undefined;
+	level?: number;
+};
+
+export type INavData = {
+	subheader: string;
+	items: TMenuItem[];
+}[];
+
+export const useNavData = () =>
 	useMemo(
 		() => [
 			// OVERVIEW
@@ -312,17 +328,3 @@ export const useNavData = (): INavData =>
 		],
 		[],
 	);
-export type TMenuItems = {
-	title: string;
-	path?: string;
-	icon?: JSX.Element;
-	info?: JSX.Element;
-	disabled?: boolean;
-	caption?: string;
-	children?: TMenuItems[] | undefined;
-};
-
-export type INavData = {
-	subheader: string;
-	items: TMenuItems[];
-}[];
