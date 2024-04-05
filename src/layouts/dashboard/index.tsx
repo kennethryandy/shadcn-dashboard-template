@@ -6,7 +6,6 @@ import Main from "./main";
 import { useNavData } from "@/theme/configs/dashboard/navigations";
 import NavHorizontal from "./nav-section/horizontal";
 import { useSettings } from "@/components/settings/store";
-import SplashScreen from "@/components/loading/splash-screen";
 
 // ----------------------------------------------------------------------
 

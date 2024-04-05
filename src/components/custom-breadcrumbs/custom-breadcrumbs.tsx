@@ -30,7 +30,7 @@ export default function CustomBreadcrumbs({ heading, action, links, moreLink, ac
 		<div className={className}>
 			<div className="flex shrink-0 items-center">
 				<div className="flex-grow">
-					{heading && <h4 className="text-md xl:text-2xl lg:text-lg mb-2 font-bold">{heading}</h4>}
+					{heading && <h4 className="text-slate-800 dark:text-slate-200 text-md xl:text-2xl lg:text-lg mb-2 font-bold">{heading}</h4>}
 
 					<Breadcrumb>
 						<BreadcrumbList className="sm:gap-3.5">
@@ -42,9 +42,7 @@ export default function CustomBreadcrumbs({ heading, action, links, moreLink, ac
 												{link.name}
 											</BreadcrumbLink>
 										) : (
-											<BreadcrumbPage className="cursor-default font-medium opacity-50">
-												{link.name}
-											</BreadcrumbPage>
+											<BreadcrumbPage className="cursor-default font-medium opacity-50">{link.name}</BreadcrumbPage>
 										)}
 									</BreadcrumbItem>
 									{idx !== links.length - 1 && (

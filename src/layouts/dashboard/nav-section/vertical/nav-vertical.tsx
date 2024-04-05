@@ -61,21 +61,14 @@ export default function NavVertical({ children, themeLayout, navData = [] }: INa
 				variant="outlined"
 				size="icon"
 				className={cn(
-					"transition-all bg-background border border-border hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-30 fixed",
-					isOpen
-						? "rotate-0 left-[calc(theme(spacing.72)_-_16px_)] top-6"
-						: "rotate-180 left-[calc(theme(spacing.24)_-_16px_)] top-4",
+					"transition-all fixed bg-background border border-border hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-30",
+					isOpen ? "rotate-0 left-[calc(theme(spacing.72)_-_16px_)] top-6" : "rotate-180 left-[calc(theme(spacing.24)_-_16px_)] top-4",
 					offset && "top-4",
 				)}
-				onClick={expanded.onToggle}
-				offset={false}>
+				onClick={expanded.onToggle}>
 				<ChevronLeftIcon className="h-4 w-4" />
 			</Button>
-			<div
-				className={cn(
-					"z-20 transition-all fixed h-full hidden md:flex flex-col border-r border-dashed",
-					isOpen ? "w-72" : "w-24",
-				)}>
+			<div className={cn("z-20 fixed transition-all h-full hidden md:flex flex-col border-r border-dashed", isOpen ? "w-72" : "w-24")}>
 				{isOpen ? <NavVerticalContent navData={navData} /> : <NavMiniContent navData={navData} />}
 			</div>
 		</div>
@@ -86,7 +79,14 @@ export default function NavVertical({ children, themeLayout, navData = [] }: INa
 			<Header navData={navData} navExpanded={isOpen} offset={offset.value} />
 			<div className="min-h-full w-full flex flex-col sm:flex-row">
 				{renderNavVertical}
-				<Main classname={cn(!xlUp && isOpen && "py-[5.5rem]")}>{children}</Main>
+				<Main
+					classname={cn(
+						!xlUp && isOpen && "py-[5.5rem]",
+						isOpen ? "md:max-w-[calc(100%_-_theme(spacing.72))]" : "md:max-w-[calc(100%_-_theme(spacing.24))]",
+						"max-w-full",
+					)}>
+					{children}
+				</Main>
 			</div>
 		</>
 	);

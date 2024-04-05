@@ -58,14 +58,12 @@ export default function Notifications() {
 		<Sheet>
 			<CustomTooltip title="Notifications">
 				<SheetTrigger asChild>
-					<IconButton>
-						<div>
-							<BadgeFloat badgeContent={totalUnRead}>
-								<span className="w-6 h-6 flex">
-									<Iconify icon="solar:bell-bing-bold-duotone" width={24} />
-								</span>
-							</BadgeFloat>
-						</div>
+					<IconButton size="md">
+						<BadgeFloat badgeContent={totalUnRead}>
+							<span className="size-6 flex">
+								<Iconify icon="solar:bell-bing-bold-duotone" width={24} />
+							</span>
+						</BadgeFloat>
 					</IconButton>
 				</SheetTrigger>
 			</CustomTooltip>
@@ -75,8 +73,8 @@ export default function Notifications() {
 					<div className="flex items-center gap-1">
 						{!!totalUnRead && (
 							<CustomTooltip title="Mark all as read">
-								<IconButton variant="primary" size="sm">
-									<CheckCheck width={18} height={18} />
+								<IconButton color="primary" size="sm">
+									<CheckCheck width={20} height={20} />
 								</IconButton>
 							</CustomTooltip>
 						)}

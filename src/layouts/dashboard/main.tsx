@@ -11,7 +11,7 @@ interface IProps {
 
 export default function Main({ children, classname }: IProps) {
 	return (
-		<main id="main" className={cn("flex flex-col flex-grow min-h-full py-16 lg:py-[5.5rem] px-4 w-full h-[200vh]", classname)}>
+		<main id="main" className={cn("flex flex-col flex-grow min-h-full py-16 lg:py-[5.5rem] px-1 lg:px-4 w-full", classname)}>
 			{children}
 		</main>
 	);

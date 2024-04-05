@@ -25,17 +25,18 @@ type TPresetColors = "default" | "purple" | "blue" | "orange" | "rose" | "zinc";
 export default function SettingsDrawer({ children }: SettingsDrawerProps) {
 	const [fullscreen, setFullscreen] = useState(false);
 	const settings = useSettings();
+
 	const theme = useTheme();
 
 	const onToggleFullScreen = useCallback(() => {
 		if (!document.fullscreenElement) {
-		  document.documentElement.requestFullscreen();
-		  setFullscreen(true);
+			document.documentElement.requestFullscreen();
+			setFullscreen(true);
 		} else if (document.exitFullscreen) {
-		  document.exitFullscreen();
-		  setFullscreen(false);
+			document.exitFullscreen();
+			setFullscreen(false);
 		}
-	  }, []);
+	}, []);
 
 	const renderHead = (
 		<div className="flex fixed sm:w-80 z-50 sm:max-w-sm items-center justify-between py-4 pr-2 pl-4">
@@ -131,7 +132,9 @@ export default function SettingsDrawer({ children }: SettingsDrawerProps) {
 
 	const renderFullscreen = (
 		<div className="fixed bottom-6 z-50 sm:w-80 px-6">
-			<button className="w-full inline-flex items-center justify-center outline-0 m-0 p-0 cursor-pointer select-none align-middle appearance-none rounded-lg h-12 border border-border/40" onClick={onToggleFullScreen}>
+			<button
+				className="w-full inline-flex items-center justify-center outline-0 m-0 p-0 cursor-pointer select-none align-middle appearance-none rounded-lg h-12 border border-border/40"
+				onClick={onToggleFullScreen}>
 				<SvgColor
 					className={cn("w-4 h-4 mr-1.5", {
 						"text-primary": fullscreen,

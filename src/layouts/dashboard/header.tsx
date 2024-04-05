@@ -39,7 +39,7 @@ export default function Header({ className, navData, navExpanded, offset, showLo
 					<CustomTooltip title="Settings">
 						<div>
 							<Settings>
-								<IconButton>
+								<IconButton size="md">
 									<Iconify icon="solar:settings-bold-duotone" width={24} />
 								</IconButton>
 							</Settings>

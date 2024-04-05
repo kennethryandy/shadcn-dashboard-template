@@ -22,7 +22,7 @@ export default function Avatar({ src, alt, children, className, ...props }: Avat
 	return (
 		<AvatarUI className={cn("h-8 w-8", className)} {...props}>
 			<AvatarImage src={src} alt={alt} />
-			<AvatarFallback className={cn("uppercase text-white bg-primary/80")}>{fallback}</AvatarFallback>
+			<AvatarFallback className={cn("uppercase text-white bg-primary/80 p-3")}>{fallback}</AvatarFallback>
 		</AvatarUI>
 	);
 }
