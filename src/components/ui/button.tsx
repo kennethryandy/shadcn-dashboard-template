@@ -22,7 +22,7 @@ const buttonVariants = cva(
 			{
 				variant: "ghost",
 				color: "default",
-				className: "text-common/95 dark:hover:bg-accent/15 hover:bg-accent hover:text-foreground",
+				className: "text-common dark:hover:bg-accent/15 hover:bg-accent",
 			},
 			{
 				variant: "soft",

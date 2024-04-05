@@ -13,7 +13,7 @@ export default function CustomTableNoData({ columnLength, notFound }: CustomTabl
 		<TableRow>
 			<TableCell
 				colSpan={columnLength}
-				className="h-96 text-center p-4 group-data-[dense=sm]:py-1 group-data-[dense=sm]:px-2.5 group-data-[dense=md]:py-2 group-data-[dense=md]:px-3">
+				className="transition-all h-96 text-center p-4 group-data-[dense=sm]:py-1 group-data-[dense=sm]:px-2.5 group-data-[dense=md]:py-2 group-data-[dense=md]:px-3">
 				{notFound && <EmptyContent className="h-full" title="No Data Found" />}
 			</TableCell>
 		</TableRow>

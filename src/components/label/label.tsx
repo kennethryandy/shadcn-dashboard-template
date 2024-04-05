@@ -28,17 +28,17 @@ const labelVariant = cva(
 			{
 				variant: "contained",
 				color: "default",
-				className: "text-white bg-[#212b36] dark:text-[#212b36] dark:bg-white",
+				className: "text-white bg-common dark:text-slate-900",
 			},
 			{
 				variant: "outlined",
 				color: "default",
-				className: "text-[#212b36] bg-transparent border-2 border-[#212b36] dark:border-white dark:text-white",
+				className: "text-common bg-transparent border-2 border-common dark:border-white dark:text-white",
 			},
 			{
 				variant: "ghost",
 				color: "default",
-				className: "text-foreground bg-accent/[0.8]",
+				className: "text-foreground bg-accent/[0.8] dark:bg-accent/10",
 			},
 			// Primary
 			{

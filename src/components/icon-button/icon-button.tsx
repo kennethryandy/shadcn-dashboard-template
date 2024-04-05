@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // ----------------------------------------------------------------------
 
 const iconButtonVariants = cva(
-	"inline-flex items-center justify-center relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors [&>svg]:text-font-inherit",
+	"inline-flex items-center justify-center relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors [&>svg]:text-font-inherit disabled:pointer-events-none disabled:opacity-50",
 	{
 		variants: {
 			variant: {

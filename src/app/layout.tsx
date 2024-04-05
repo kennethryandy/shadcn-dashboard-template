@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Script from "next/script";
+import ProgressBarProvider from "@/components/progress-bar";
 
 export const metadata: Metadata = {
 	title: "Dashboard Shadnc Template",
@@ -43,12 +44,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="scroll-smooth">
+		<html lang="en" className="scroll-smooth" suppressHydrationWarning>
 			<body className={GeistSans.className}>
 				<Script id="color-presets" strategy="beforeInteractive">
 					{`(function() {const preset = JSON.parse(localStorage.getItem("settings"))?.state?.themeColorPresets; if (preset){document.documentElement.setAttribute("data-theme", preset);}})();`}
 				</Script>
-				<ThemeProvider attribute="class">{children}</ThemeProvider>
+				<ProgressBarProvider>
+					<ThemeProvider attribute="class">{children}</ThemeProvider>
+				</ProgressBarProvider>
 			</body>
 		</html>
 	);
