@@ -5,7 +5,7 @@ import IconButton from "@/components/icon-button/icon-button";
 import Iconify from "@/components/iconify";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { CheckCheck, X } from "lucide-react";
 import { List, ListItemAvatar, ListItemButton, ListItemText } from "../../../components/list";
@@ -13,6 +13,10 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { fToNow } from "@/utils/format-time";
 import { Button } from "@/components/ui/button";
+import SvgColor from "@/components/svg-color";
+import { Tab } from "@/components/tabs";
+import Label from "@/components/label";
+import { Tabs } from "@/components/ui/tabs";
 
 // ----------------------------------------------------------------------
 
@@ -37,9 +41,23 @@ const TABS = [
 // ----------------------------------------------------------------------
 
 export default function Notifications() {
+	const [currentTab, setCurrentTab] = useState("all");
 	const [notifications, setNotifications] = useState(_notifications);
 
 	const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
+
+	const handleChangeTab = useCallback((newValue: string) => {
+		setCurrentTab(newValue);
+	}, []);
+
+	const handleMarkAllAsRead = () => {
+		setNotifications(
+			notifications.map((notification) => ({
+				...notification,
+				isUnRead: false,
+			})),
+		);
+	};
 
 	const renderList = (
 		<div className="w-full h-full flex flex-grow max-h-[82vh]">
@@ -59,21 +77,21 @@ export default function Notifications() {
 			<CustomTooltip title="Notifications">
 				<SheetTrigger asChild>
 					<IconButton size="md">
-						<BadgeFloat badgeContent={totalUnRead}>
+						<BadgeFloat variant="error" badgeContent={totalUnRead}>
 							<span className="size-6 flex">
-								<Iconify icon="solar:bell-bing-bold-duotone" width={24} />
+								<SvgColor className="text-foreground/80" src="/assets/icons/setting/solar_bell-bing.svg" />
 							</span>
 						</BadgeFloat>
 					</IconButton>
 				</SheetTrigger>
 			</CustomTooltip>
-			<SheetContent className="p-0 w-full sm:w-3/4" overlayProps={{ className: "hidden" }} closeIcon={false}>
+			<SheetContent className="p-0 w-full max-h-screen sm:w-3/4" overlayProps={{ className: "hidden" }} closeIcon={false}>
 				<SheetHeader className="space-y-0 flex flex-row justify-between items-center px-6 py-3">
 					<SheetTitle>Notifications</SheetTitle>
 					<div className="flex items-center gap-1">
 						{!!totalUnRead && (
 							<CustomTooltip title="Mark all as read">
-								<IconButton color="primary" size="sm">
+								<IconButton color="primary" size="sm" onClick={handleMarkAllAsRead}>
 									<CheckCheck width={20} height={20} />
 								</IconButton>
 							</CustomTooltip>
@@ -86,7 +104,18 @@ export default function Notifications() {
 					</div>
 				</SheetHeader>
 				<Separator />
-				<div className="h-12 sticky p-6"></div>
+				<Tabs value={currentTab} onValueChange={handleChangeTab}>
+					{TABS.map((tab) => (
+						<Tab key={tab.value} value={tab.value} className="sticky" triggerProps={{ className: "h-12" }}>
+							<span>{tab.label}</span>
+							<Label
+								variant={((tab.value === "all" || tab.value === currentTab) && "contained") || "ghost"}
+								color={(tab.value === "unread" && "info") || (tab.value === "archived" && "success") || "default"}>
+								{tab.count}
+							</Label>
+						</Tab>
+					))}
+				</Tabs>
 				<Separator />
 				<div>{renderList}</div>
 			</SheetContent>

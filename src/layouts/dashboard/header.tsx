@@ -10,6 +10,7 @@ import Iconify from "@/components/iconify";
 import CustomTooltip from "@/components/custom-tooltip";
 import Logo from "@/components/logo";
 import Link from "next/link";
+import SvgColor from "@/components/svg-color";
 
 // ----------------------------------------------------------------------
 
@@ -40,7 +41,7 @@ export default function Header({ className, navData, navExpanded, offset, showLo
 						<div>
 							<Settings>
 								<IconButton size="md">
-									<Iconify icon="solar:settings-bold-duotone" width={24} />
+									<SvgColor src="/assets/icons/setting/solar_settings-bold.svg" />
 								</IconButton>
 							</Settings>
 						</div>

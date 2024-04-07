@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import CustomTooltip from "@/components/custom-tooltip";
 import Iconify from "@/components/iconify";
 import { HoverCardTrigger } from "@/components/ui/hover-card";
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronRightIcon, Info } from "lucide-react";
 
 // ----------------------------------------------------------------------
 
@@ -44,7 +44,7 @@ export default function NavItem(props: NavItemProps) {
 
 				{caption && (
 					<CustomTooltip side="bottom" sideOffset={8} title={caption} arrow>
-						<Iconify width={16} icon="eva:info-outline" className="ml-1.5 transition-colors" />
+						<Info width={16} height={16} className="text-common/60 ml-1.5 transition-colors" />
 					</CustomTooltip>
 				)}
 
@@ -69,14 +69,12 @@ export default function NavItem(props: NavItemProps) {
 			{!!icon && <span className="icon text-start w-5 h-5 font-medium mr-1.5 text-inherit">{icon}</span>}
 
 			<span className="flex-auto min-w-0">
-				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">
-					{title}
-				</span>
+				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">{title}</span>
 			</span>
 
 			{caption && (
 				<CustomTooltip side="bottom" sideOffset={8} title={caption} arrow>
-					<Iconify width={16} icon="eva:info-outline" className="ml-1.5" />
+					<Info width={16} height={16} className="text-common/60 ml-1.5 transition-colors" />
 				</CustomTooltip>
 			)}
 

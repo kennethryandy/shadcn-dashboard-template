@@ -1,6 +1,7 @@
 // ----------------------------------------------------------------------
 
-export { default as Tabs } from "./tabs";
+export { CustomTabs as Tabs } from "./tabs";
+export { CustomTab as Tab } from "./tab";
 
 export interface ITabsOption {
 	value: string;

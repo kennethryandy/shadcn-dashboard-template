@@ -103,7 +103,7 @@ export function useUserColumnDef(): ColumnDef<User>[] {
 					return (
 						<div
 							className="cursor-pointer whitespace-nowrap inline-flex items-center"
-							onClick={() => column.getToggleSortingHandler()}>
+							onClick={() => column.toggleSorting(isSorted)}>
 							<span>Name</span>
 							<ArrowDown className={cn("w-4 h-4 ml-2 transition-all transform", { "rotate-180": isSorted })} />
 						</div>
@@ -151,7 +151,7 @@ export function useUserColumnDef(): ColumnDef<User>[] {
 					return (
 						<div
 							className="cursor-pointer whitespace-nowrap inline-flex items-center group/header"
-							onClick={() => column.getToggleSortingHandler()}>
+							onClick={() => column.toggleSorting(isSorted)}>
 							<span>Company</span>
 							<ArrowDown
 								className={cn("w-4 h-4 ml-2 opacity-0 transition-all transform group-hover/header:opacity-100", {
@@ -170,7 +170,7 @@ export function useUserColumnDef(): ColumnDef<User>[] {
 					return (
 						<div
 							className="cursor-pointer whitespace-nowrap inline-flex items-center group/header"
-							onClick={() => column.getToggleSortingHandler()}>
+							onClick={() => column.toggleSorting(isSorted)}>
 							<span>Role</span>
 							<ArrowDown
 								className={cn("w-4 h-4 ml-2 opacity-0 transition-all transform group-hover/header:opacity-100", {
@@ -189,7 +189,7 @@ export function useUserColumnDef(): ColumnDef<User>[] {
 					return (
 						<div
 							className="cursor-pointer whitespace-nowrap inline-flex items-center group/header"
-							onClick={() => column.getToggleSortingHandler()}>
+							onClick={() => column.toggleSorting(isSorted)}>
 							<span>Status</span>
 							<ArrowDown
 								className={cn("w-4 h-4 ml-2 opacity-0 transition-all transform group-hover/header:opacity-100", {

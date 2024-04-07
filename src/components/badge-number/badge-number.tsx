@@ -11,6 +11,7 @@ const badgeFloatVariants = cva(
 				default: "border-transparent bg-primary text-primary-foreground",
 				secondary: "border-transparent bg-secondary text-secondary-foreground",
 				destructive: "border-transparent bg-destructive text-destructive-foreground",
+				error: "border-transparent bg-error text-error-foreground",
 				outline: "text-foreground",
 			},
 			align: {
@@ -32,7 +33,11 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement>, VariantProps
 function BadgeFloat({ className, variant, children, badgeContent, align = "end", ...props }: BadgeProps) {
 	return (
 		<span className="relative inline-flex align-middle flex-shrink-0">
-			<div className={cn("badge-content", badgeFloatVariants({ variant, align }), className)} {...props}>
+			<div
+				className={cn("badge-content", badgeFloatVariants({ variant, align, className }), {
+					"px-0 size-1.5 border-0 min-w-0 min-h-0": !badgeContent,
+				})}
+				{...props}>
 				{badgeContent}
 			</div>
 			{children}

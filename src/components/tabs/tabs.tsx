@@ -12,7 +12,7 @@ interface CustomTabsProps<T extends ITabsOption[]> {
 	onChange?: (value: T[number]["value"]) => void;
 }
 
-export default function CustomTabs<T extends ITabsOption[]>({ children, value, onChange, options }: CustomTabsProps<T>) {
+export function CustomTabs<T extends ITabsOption[]>({ children, value, onChange, options }: CustomTabsProps<T>) {
 	const handleChange = (value: string) => {
 		if (!!onChange) {
 			onChange(value as T[number]["value"]);

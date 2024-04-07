@@ -13,6 +13,7 @@ import LayoutOptions from "./layout-options";
 import PresetsOptions from "./presets-options";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import SvgColor from "@/components/svg-color";
+import { ChevronLeft, ChevronRight, RotateCw, X } from "lucide-react";
 
 // ----------------------------------------------------------------------
 
@@ -44,13 +45,13 @@ export default function SettingsDrawer({ children }: SettingsDrawerProps) {
 
 			<IconButton onClick={settings.reset} size="sm">
 				{/* <Badge color="error" variant="dot" invisible={!settings.canReset}> */}
-				<Iconify icon="solar:restart-bold" />
+				<RotateCw />
 				{/* </Badge> */}
 			</IconButton>
 
 			<SheetClose asChild>
 				<IconButton size="sm">
-					<Iconify icon="mingcute:close-line" />
+					<X />
 				</IconButton>
 			</SheetClose>
 		</div>
@@ -94,22 +95,24 @@ export default function SettingsDrawer({ children }: SettingsDrawerProps) {
 					className={cn("flex items-center justify-between w-1/4 transition-all", {
 						"w-1/2": settings.themeStretch,
 					})}>
-					<Iconify
-						className={cn("w-6 h-6 transition-all", {
+					<ChevronRight
+						width={24}
+						height={24}
+						className={cn("transition-all", {
 							"transform rotate-180 text-primary-dark": settings.themeStretch,
 						})}
-						icon={"eva:arrow-ios-forward-fill"}
 					/>
 					<Divider
-						className={cn("border-dashed flex-grow transition-colors border-foreground", {
-							"border-primary-dark": settings.themeStretch,
+						className={cn("border-dashed flex-grow transition-colors border-foreground border-opacity-12", {
+							"border-primary-dark border-opacity-100": settings.themeStretch,
 						})}
 					/>
-					<Iconify
-						className={cn("w-6 h-6 transition-all", {
+					<ChevronLeft
+						width={24}
+						height={24}
+						className={cn("transition-all", {
 							"transform rotate-180 text-primary-dark": settings.themeStretch,
 						})}
-						icon={"eva:arrow-ios-back-fill"}
 					/>
 				</div>
 			</button>
