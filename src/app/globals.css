@@ -104,18 +104,18 @@
 
 
   * {
-    @apply border-border border-opacity-[0.24] dark:border-opacity-[0.36];
+    @apply border-border border-opacity-24 dark:border-opacity-36;
   }
   body {
     @apply bg-background text-foreground antialiased leading-relaxed;
   }
 
   input[type=search]::-webkit-search-cancel-button {
-    @apply appearance-none h-4 w-4;
-    background-color: currentColor;
+    @apply appearance-none hidden;
+    /* background-color: currentColor;
     cursor: pointer;
     mask: url(/assets/icons/delete-icon.svg) no-repeat center / contain;
-    -webkit-mask: url(/assets/icons/delete-icon.svg) no-repeat center / contain;
+    -webkit-mask: url(/assets/icons/delete-icon.svg) no-repeat center / contain; */
   }
 
   p,strong {
@@ -151,7 +151,6 @@
         scrollbar-color: hsl(var(--muted-foreground) / 0.8) transparent;
         scrollbar-gutter: auto;
         scrollbar-width: thin;
-        border-radius: 8px;
       }
     }
   }

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // ----------------------------------------------------------------------
 
 const iconButtonVariants = cva(
-	"inline-flex items-center justify-center relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors [&>svg]:text-font-inherit disabled:pointer-events-none disabled:opacity-50",
+	"inline-flex items-center justify-center size-full relative box-border bg-transparent outline-none select-none text-center cursor-pointer flex-auto rounded-full overflow-visible leading-none appearance-none align-middle transition-colors [&>svg]:text-font-inherit disabled:pointer-events-none disabled:opacity-35",
 	{
 		variants: {
 			variant: {
@@ -14,9 +14,11 @@ const iconButtonVariants = cva(
 				filled: "",
 				outlined: "",
 				ghost: "",
+				soft: "",
 			},
 			color: {
 				default: "",
+				mute: "",
 				primary: "",
 				secondary: "",
 				info: "",
@@ -25,9 +27,10 @@ const iconButtonVariants = cva(
 				error: "",
 			},
 			size: {
-				sm: "p-1 text-lg w-8 max-w-8 h-8 max-h-8 [&>svg]:h-5 [&>svg]:w-5",
-				md: "p-2 text-2xl w-10 max-w-10 h-10 max-h-10 [&>svg]:h-6 [&>svg]:w-6",
-				lg: "p-3 text-3xl w-14 max-w-14 h-14 max-h-14 [&>svg]:h-7 [&>svg]:w-7",
+				xs: "p-1 text-md min-w-6 min-h-6 max-w-6 max-h-6 [&>svg]:size-4",
+				sm: "p-1 text-lg min-w-8 min-h-8 max-w-8 max-h-8 [&>svg]:h-5 [&>svg]:w-5",
+				md: "p-2 text-2xl min-w-10 min-h-10 max-w-10 max-h-10 [&>svg]:h-6 [&>svg]:w-6",
+				lg: "p-3 text-3xl min-w-14 min-h-14 max-w-14 max-h-14 [&>svg]:h-7 [&>svg]:w-7",
 			},
 		},
 		compoundVariants: [
@@ -51,7 +54,12 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "default",
-				className: "dark:text-slate-100 text-slate-900 bg-slate-400/10 hover:bg-slate-400/35",
+				className: "dark:text-slate-200 text-slate-800 hover:bg-slate-400/12",
+			},
+			{
+				variant: "soft",
+				color: "default",
+				className: "dark:text-slate-100/85 text-slate-700/85 bg-slate-400/10 hover:bg-slate-400/24",
 			},
 			// Primary color
 			{
@@ -72,7 +80,12 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "primary",
-				className: "text-primary bg-primary/10 hover:bg-primary/35",
+				className: "text-primary hover:bg-primary/12",
+			},
+			{
+				variant: "soft",
+				color: "primary",
+				className: "text-primary/90 hover:text-primary bg-primary/12 hover:bg-primary/24 hover:text-primary",
 			},
 			// Secondary color
 			{
@@ -88,7 +101,33 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "secondary",
-				className: "text-secondary bg-secondary/10 hover:bg-secondary/35",
+				className: "text-secondary hover:bg-secondary/12",
+			},
+			{
+				variant: "soft",
+				color: "secondary",
+				className: "text-secondary/90 hover:text-secondary bg-secondary/12 hover:bg-secondary/15",
+			},
+			// Success color
+			{
+				variant: "filled",
+				color: "success",
+				className: "text-slate-100 bg-success hover:bg-success-dark dark:bg-success dark:hover:bg-success/80",
+			},
+			{
+				variant: "outlined",
+				color: "success",
+				className: "text-success border border-success hover:bg-success-light/35",
+			},
+			{
+				variant: "ghost",
+				color: "success",
+				className: "text-success hover:bg-success/12",
+			},
+			{
+				variant: "soft",
+				color: "success",
+				className: "text-success/90 hover:text-success bg-success/12 hover:bg-success/15",
 			},
 			// Info color
 			{
@@ -104,7 +143,12 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "info",
-				className: "text-info bg-info/10 hover:bg-info/35",
+				className: "text-info hover:bg-info/12",
+			},
+			{
+				variant: "soft",
+				color: "info",
+				className: "text-info/90 hover:text-info bg-info/12 hover:bg-info/15",
 			},
 			// Warning color
 			{
@@ -120,7 +164,12 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "warning",
-				className: "text-warning bg-warning/10 hover:bg-warning/35",
+				className: "text-warning hover:bg-warning/12",
+			},
+			{
+				variant: "soft",
+				color: "warning",
+				className: "text-warning-dark/90 hover:text-warning-dark bg-warning/12 hover:bg-warning/15",
 			},
 			// Error color
 			{
@@ -136,7 +185,12 @@ const iconButtonVariants = cva(
 			{
 				variant: "ghost",
 				color: "error",
-				className: "text-error bg-error/10 hover:bg-error/35",
+				className: "text-error hover:bg-error/35",
+			},
+			{
+				variant: "soft",
+				color: "error",
+				className: "text-error-dark/90 hover:text-error-dark bg-error/12 hover:bg-error/15",
 			},
 		],
 		defaultVariants: {
@@ -149,6 +203,9 @@ const iconButtonVariants = cva(
 
 export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">, VariantProps<typeof iconButtonVariants> {
 	asChild?: boolean;
+	variant?: "default" | "filled" | "outlined" | "ghost" | "soft";
+	size?: "xs" | "sm" | "md" | "lg";
+	color?: "default" | "primary" | "secondary" | "info" | "success" | "warning" | "error";
 	transitionOff?: boolean;
 }
 
@@ -169,6 +226,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 					},
 				)}
 				ref={ref}
+				type="button"
 				{...props}
 			/>
 		);

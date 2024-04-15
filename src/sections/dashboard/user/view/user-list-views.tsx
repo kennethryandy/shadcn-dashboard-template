@@ -26,6 +26,7 @@ import UserFilterResult from "../user-table-filter-result";
 import { DensityFeature, useUserColumnDef } from "../user-list-columns-data";
 import { DensityState } from "@/types/tables";
 import { type ITabsOption, Tabs } from "@/components/tabs";
+import UserTableTabs from "../user-table-tabs";
 
 // ----------------------------------------------------------------------
 
@@ -162,7 +163,7 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 	const isFiltered = roles.length > 0 || columnFilters.length > 0 || status !== "all";
 	return (
 		<TableContainer dense={density}>
-			<Tabs value={status} onChange={handleFilterStatusChange} options={STATUS_OPTIONS} />
+			<UserTableTabs value={status} options={STATUS_OPTIONS} onChange={handleFilterStatusChange} canHideColumns={canHideColumns} />
 
 			<UserTableToolbar table={table} canHideColumns={canHideColumns} onSearchRole={handleFilterRoleChange} roles={roles} />
 

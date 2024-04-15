@@ -25,7 +25,7 @@ export function CustomTabs<T extends ITabsOption[]>({ children, value, onChange,
 					const variant = option?.icon?.variant || (option.value === value ? "contained" : "ghost");
 					return (
 						<TabsTrigger
-							className="relative data-[state=active]:bg-transparent [&[data-state=active]>span]:text-common data-[state=active]:shadow-none before:content-[''] before:duration-150 before:transition-all before:absolute before:bottom-[-1px] before:h-[0.1rem] before:w-0 data-[state=active]:before:w-full before:bg-common space-x-1.5"
+							className="relative h-12 data-[state=active]:bg-transparent [&[data-state=active]>span]:text-common data-[state=active]:shadow-none before:content-[''] before:duration-150 before:transition-all before:absolute before:bottom-[-1px] before:h-[0.1rem] before:w-0 data-[state=active]:before:w-full before:bg-common space-x-1.5"
 							key={option.value}
 							value={option.value}>
 							<span className="font-medium">{option.label}</span>

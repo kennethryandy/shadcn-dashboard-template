@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none space-x-1 disabled:pointer-events-none disabled:opacity-50 transition-colors",
+	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none space-x-1 disabled:pointer-events-none disabled:opacity-35 transition-colors",
 	{
 		compoundVariants: [
 			// Default color
@@ -17,7 +17,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "default",
-				className: "text-foreground border-input border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-foreground border-input border",
 			},
 			{
 				variant: "ghost",
@@ -43,7 +43,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "primary",
-				className: "text-primary border-primary border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-primary border-primary border",
 			},
 			{
 				variant: "ghost",
@@ -69,7 +69,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "secondary",
-				className: "text-secondary border-secondary border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-secondary border-secondary border",
 			},
 			{
 				variant: "ghost",
@@ -95,7 +95,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "info",
-				className: "text-info border-info border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-info border-info border",
 			},
 			{
 				variant: "ghost",
@@ -121,7 +121,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "success",
-				className: "text-success border-success border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-success border-success border",
 			},
 			{
 				variant: "ghost",
@@ -147,7 +147,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "warning",
-				className: "text-warning border-warning border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-warning border-warning border",
 			},
 			{
 				variant: "ghost",
@@ -173,7 +173,7 @@ const buttonVariants = cva(
 			{
 				variant: "outlined",
 				color: "error",
-				className: "text-error border-error border hover:shadow-[currentcolor_0px_0px_0px_0.5px]",
+				className: "text-error border-error border",
 			},
 			{
 				variant: "ghost",
@@ -244,8 +244,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				data-start-icon={!!startIcon}
 				data-end-icon={!!endIcon}
 				className={cn(buttonVariants({ variant, size, color, className }), {
-					"ring-common ring-offset-0 focus-visible:ring-2": ring,
+					"ring-common ring-offset-0 focus-visible:ring-1": ring,
 				})}
+				type="button"
 				ref={ref}
 				{...props}>
 				{!!startIcon && startIcon}

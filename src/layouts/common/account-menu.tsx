@@ -1,13 +1,7 @@
 import { _mock } from "@/_mock";
 import Avatar from "@/components/avatar";
 import IconButton from "@/components/icon-button/icon-button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { paths } from "@/theme/routes/paths";
 import { DropdownMenuGroup, DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
@@ -66,20 +60,20 @@ export default function AccountMenu() {
 					<p className="text-xs text-gray-400">{mockUser.email}</p>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
-				<DropdownMenuGroup>
-					{OPTIONS.map((opt) => (
-						<DropdownMenuItem key={opt.label} asChild>
+				{OPTIONS.map((opt) => (
+					<DropdownMenuItem key={opt.label} asChild className="p-0 cursor-pointer hover:bg-common/12">
+						<div className="w-full">
 							<Link
 								href={opt.linkTo}
-								className="relative flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent/10 focus:text-accent-foreground cursor-pointer hover:bg-accent/10">
+								className="relative w-full flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent/10 focus:text-accent-foreground cursor-pointer">
 								{opt.label}
 							</Link>
-						</DropdownMenuItem>
-					))}
-				</DropdownMenuGroup>
+						</div>
+					</DropdownMenuItem>
+				))}
 				<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
-				<DropdownMenuItem asChild>
-					<Link href="#" className="!text-destructive font-semibold cursor-pointer hover:bg-accent/10">
+				<DropdownMenuItem asChild className="hover:bg-common/12">
+					<Link href="#" className="!text-error font-semibold cursor-pointer">
 						Logout
 					</Link>
 				</DropdownMenuItem>

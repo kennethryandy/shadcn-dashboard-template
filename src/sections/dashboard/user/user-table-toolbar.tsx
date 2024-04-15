@@ -1,12 +1,12 @@
 "use client";
 import { _roles, type User } from "@/_mock";
+import { SearchInput } from "@/components/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { splitCase } from "@/utils/change-case";
-import { ChevronDownIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import type { Column, Table } from "@tanstack/react-table";
 
 // ----------------------------------------------------------------------
@@ -78,13 +78,13 @@ export default function UserTableToolbar({ table, roles, onSearchRole, canHideCo
 				</DropdownMenuContent>
 			</DropdownMenu>
 
-			<Input
+			<SearchInput
 				placeholder="Search name..."
 				value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
 				onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
-				className="w-full border-opacity-10"
-				type="search"
-				icon={<MagnifyingGlassIcon width={24} height={24} />}
+				onClear={() => {
+					table.getColumn("name")?.setFilterValue("");
+				}}
 			/>
 		</div>
 	);

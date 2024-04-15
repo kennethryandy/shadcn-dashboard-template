@@ -61,7 +61,7 @@ export default function NavVertical({ children, themeLayout, navData = [] }: INa
 				variant="outlined"
 				size="icon"
 				className={cn(
-					"transition-all fixed bg-background border border-border hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-30",
+					"transition-all fixed bg-background border border-border border-opacity-24 dark:border-opacity-36 hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-30",
 					isOpen ? "rotate-0 left-[calc(theme(spacing.72)_-_16px_)] top-6" : "rotate-180 left-[calc(theme(spacing.24)_-_16px_)] top-4",
 					offset && "top-4",
 				)}

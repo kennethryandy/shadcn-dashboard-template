@@ -6,7 +6,7 @@ import { splitCase } from "@/utils/change-case";
 import type { Column, ColumnFiltersState } from "@tanstack/react-table";
 import { LucideTrash2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { type Dispatch, type SetStateAction, useCallback } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -26,19 +26,16 @@ export default function UserFilterResult({ result = 0, roles, status, columnFilt
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
-	const handleRemoveRoleFilter = useCallback(
-		(value: string) => () => {
-			const params = new URLSearchParams(searchParams);
-			let newRoles = roles.filter((role) => role !== value);
-			params.set("roles", newRoles.join(","));
-			if (!params.get("roles")) {
-				params.delete("roles");
-			}
-			const newPath = paths.dashboard.user.list + "?" + params.toString();
-			router.push(newPath, { scroll: false });
-		},
-		[searchParams, router, roles],
-	);
+	const handleRemoveRoleFilter = (value: string) => () => {
+		const params = new URLSearchParams(searchParams);
+		let newRoles = roles.filter((role) => role !== value);
+		params.set("roles", newRoles.join(","));
+		if (!params.get("roles")) {
+			params.delete("roles");
+		}
+		const newPath = paths.dashboard.user.list + "?" + params.toString();
+		router.push(newPath, { scroll: false });
+	};
 
 	const handleRemoveNameFilter = () => {
 		const newColumnFilters = columnFilters.filter((filter) => filter.id !== "name" && filter.value !== nameFilterValue);

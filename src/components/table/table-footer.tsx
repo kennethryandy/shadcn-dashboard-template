@@ -4,6 +4,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import IconButton from "../icon-button/icon-button";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Ellipsis } from "lucide-react";
 import { usePagination } from "@/hooks";
+import { useCallback } from "react";
+import { ShadcnLabel } from "../ui/shadcn-label";
 
 // ----------------------------------------------------------------------
 
@@ -13,9 +15,21 @@ interface TableCustomFooterProps<T> {
 }
 
 export default function TableCustomFooter<T>({ table, totalCount }: TableCustomFooterProps<T>) {
-	const canPreviousPage = table.getCanPreviousPage();
-	const canNextPage = table.getCanNextPage();
-	const { pageSize, pageIndex } = table.getState().pagination;
+	const {
+		getCanPreviousPage,
+		getCanNextPage,
+		getState,
+		setPageIndex,
+		setPageSize,
+		firstPage,
+		previousPage,
+		nextPage,
+		lastPage,
+		toggleDensity,
+	} = table;
+	const canPreviousPage = getCanPreviousPage();
+	const canNextPage = getCanNextPage();
+	const { pageSize, pageIndex } = getState().pagination;
 
 	const paginationRange = usePagination({
 		totalCount,
@@ -24,60 +38,68 @@ export default function TableCustomFooter<T>({ table, totalCount }: TableCustomF
 		currentPage: pageIndex + 1,
 	});
 
-	const handlePaginate = (paginate: number) => {
-		table.setPageIndex(paginate - 1);
+	const handlePaginate = useCallback(
+		(paginate: number) => {
+			setPageIndex(paginate - 1);
+		},
+		[setPageIndex],
+	);
+
+	const handlePageSizeChange = (value: string) => {
+		setPageSize(Number(value));
 	};
 
 	return (
-		<div className="flex items-baseline md:items-center flex-col md:flex-row-reverse justify-between p-4 border-t">
-			<div className="flex items-center w-full md:w-auto space-x-2 md:space-x-4 flex-wrap">
-				<span className="text-sm">Rows per page:</span>
-				<Select
-					onValueChange={(value) => {
-						table.setPageSize(Number(value));
-					}}
-					value={pageSize + ""}>
-					<SelectTrigger className="w-fit">
-						<SelectValue />
-					</SelectTrigger>
-					<SelectContent side="bottom" align="center" className="min-w-10 w-fit">
-						{["5", "10", "15", "20", "25", "50"].map((num) => (
-							<SelectItem key={num} value={num}>
-								{num}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
+		<div className="flex items-baseline relative md:items-center flex-col md:flex-row-reverse p-2.5 md:p-4 border-t">
+			<div className="flex items-center max-lg:items-end max-lg:flex-col-reverse justify-end w-full mb-2 sm:mb-0 md:space-x-4 flex-wrap">
+				<div className="block sm:h-10 h-8 max-sm:absolute max-sm:right-2.5 max-sm:bottom-2.5">
+					<div className="flex items-center space-x-1">
+						<ShadcnLabel htmlFor="row-per-page-select" className="text-common text-sm">
+							Rows per page:
+						</ShadcnLabel>
+						<Select onValueChange={handlePageSizeChange} value={pageSize + ""}>
+							<SelectTrigger id="row-per-page-select" className="w-fit h-8 sm:h-10">
+								<SelectValue />
+							</SelectTrigger>
+							<SelectContent side="bottom" align="center" className="min-w-10 w-fit">
+								{["5", "10", "15", "20", "25", "50"].map((num) => (
+									<SelectItem key={num} value={num}>
+										{num}
+									</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
+					</div>
+				</div>
 
-				<div className="space-x-1">
-					<IconButton size="sm" onClick={table.firstPage} disabled={!canPreviousPage}>
+				<div className="space-x-1 flex items-center w-full sm:justify-start justify-center md:w-auto flex-wrap">
+					<IconButton transitionOff onClick={firstPage} disabled={!canPreviousPage}>
 						<ChevronsLeft />
 					</IconButton>
-					<IconButton size="sm" onClick={table.previousPage} disabled={!canPreviousPage}>
+					<IconButton transitionOff onClick={previousPage} disabled={!canPreviousPage}>
 						<ChevronLeft />
 					</IconButton>
-					{paginationRange?.map((paginate) => (
+					{paginationRange?.map((paginate, idx) => (
 						<IconButton
-							key={paginate}
-							size="sm"
+							key={idx}
 							onClick={() => handlePaginate(paginate ?? 1)}
 							transitionOff
 							disabled={!paginate || pageIndex + 1 === paginate}
-							className="text-sm font-medium data-[active=true]:opacity-100 data-[active=true]:font-semibold data-[active=true]:text-common data-[active=true]:bg-common/12"
-							data-active={paginate === pageIndex + 1}>
+							data-active={paginate === pageIndex + 1}
+							className="text-sm font-medium data-[active=true]:opacity-100 data-[active=true]:font-semibold data-[active=true]:text-common data-[active=true]:bg-common/12">
 							{paginate !== null ? paginate : <Ellipsis width={16} height={16} className="!size-4" />}
 						</IconButton>
 					))}
-					<IconButton size="sm" onClick={table.nextPage} disabled={!canNextPage}>
+					<IconButton transitionOff onClick={nextPage} disabled={!canNextPage}>
 						<ChevronRight />
 					</IconButton>
-					<IconButton size="sm" onClick={table.lastPage} disabled={!canNextPage}>
+					<IconButton transitionOff onClick={lastPage} disabled={!canNextPage}>
 						<ChevronsRight />
 					</IconButton>
 				</div>
 			</div>
-			<div className="self-start h-full flex items-center space-x-2">
-				<Button size="sm" variant="ghost" className="h-8" onClick={() => table.toggleDensity()}>
+			<div className="self-start h-8 sm:h-10 flex items-center space-x-2">
+				<Button size="sm" variant="soft" className="h-8" onClick={() => toggleDensity()}>
 					Density
 				</Button>
 			</div>
