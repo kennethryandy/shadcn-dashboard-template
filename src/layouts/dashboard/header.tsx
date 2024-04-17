@@ -26,7 +26,7 @@ export default function Header({ className, navData, navExpanded, offset, showLo
 	return (
 		<header
 			className={cn(
-				"w-full h-16 fixed right-0 top-0 left-auto backdrop-blur-sm md:transition-all z-20 bg-background/80",
+				"w-full h-16 fixed right-0 top-0 left-auto backdrop-blur-sm md:transition-all z-40 bg-background/80",
 				navExpanded ? "md:w-[calc(100%_-_theme(spacing.72)_-_1px)]" : "md:w-[calc(100%_-_theme(spacing.24)_-_1px)]",
 				navExpanded ? (offset ? "md:h-16" : "md:h-20") : "md:h-16",
 				className,

@@ -34,7 +34,7 @@ export default function TableSelectedAction<T extends Record<string, any>>({ act
 
 	return (
 		<thead className={cn("absolute h-12 top-0 left-0 w-full z-30")}>
-			<tr className="flex h-full items-center w-full bg-primary-light px-4">
+			<tr className="flex h-full items-center w-full bg-primary-light transition-all px-4 group-data-[dense=sm]:px-2.5 group-data-[dense=md]:px-3">
 				<th className="w-full flex items-center justify-between" colSpan={columnLength}>
 					<div className="flex items-center gap-4">
 						<Checkbox checked={isAllRowsSelected || "indeterminate"} variant="primary" onCheckedChange={handleSelect} />
