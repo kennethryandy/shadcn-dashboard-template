@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Script from "next/script";
 import ProgressBarProvider from "@/components/progress-bar";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
 	title: "Dashboard Shadnc Template",
@@ -52,6 +53,7 @@ export default function RootLayout({
 				<ProgressBarProvider>
 					<ThemeProvider attribute="class">{children}</ThemeProvider>
 				</ProgressBarProvider>
+				<Toaster />
 			</body>
 		</html>
 	);
