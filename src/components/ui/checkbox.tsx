@@ -34,10 +34,11 @@ const checkboxVariants = cva(
 
 interface ICheckbox extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>, VariantProps<typeof checkboxVariants> {
 	indeterminate?: boolean;
+	variant?: "default" | "primary" | "secondary" | "info" | "success" | "warning" | "error";
 }
 
 const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, ICheckbox>(
-	({ className, variant, indeterminate, ...props }, ref) => (
+	({ className, variant = "default", indeterminate = false, ...props }, ref) => (
 		<CheckboxPrimitive.Root ref={ref} className={cn(checkboxVariants({ variant, className }))} {...props}>
 			<CheckboxPrimitive.Indicator className="flex border-1. items-center justify-center text-current [&[data-state=indeterminate]>.indeterminate]:block h-5 [data-state=indeterminate]>.indeterminate]:fill-white [&[data-state=indeterminate]>.check]:hidden">
 				<Check className="check h-[1em] w-[1em] p-0.5 stroke-[3]" />

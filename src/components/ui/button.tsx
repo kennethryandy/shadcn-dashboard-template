@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none space-x-1 disabled:pointer-events-none disabled:opacity-35 transition-colors",
+	"inline-flex items-center justify-center capitalize whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none space-x-1 disabled:pointer-events-none disabled:opacity-35 transition-colors",
 	{
 		compoundVariants: [
 			// Default color
@@ -211,10 +211,10 @@ const buttonVariants = cva(
 				error: "",
 			},
 			size: {
-				default: "h-12 px-4 data-[start-icon=true]:pl-2 data-[end-icon=true]:pr-2",
-				sm: "h-9 px-3 data-[start-icon=true]:pl-1.5 data-[end-icon=true]:pr-1.5",
-				lg: "h-11 px-8 data-[start-icon=true]:pl-5 data-[end-icon=true]:pr-5",
-				icon: "h-10 w-10",
+				default: "h-12 text-md px-4 data-[start-icon=true]:pl-2 data-[end-icon=true]:pr-2",
+				sm: "h-9 text-sm px-3 data-[start-icon=true]:pl-1.5 data-[end-icon=true]:pr-1.5",
+				lg: "h-11 text-lg px-8 data-[start-icon=true]:pl-5 data-[end-icon=true]:pr-5",
+				icon: "h-10 text-sm w-10",
 			},
 		},
 		defaultVariants: {
@@ -249,13 +249,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				type="button"
 				ref={ref}
 				{...props}>
-				{!!startIcon && startIcon}
-				{typeof children === "string" ? (
-					<span className="text-left max-w-lg flex-1 overflow-x-hidden text-ellipsis btn-text">{children}</span>
-				) : (
-					children
-				)}
-				{!!endIcon && endIcon}
+				{!!startIcon && <span className="mr-1">{startIcon}</span>}
+				{children}
+				{!!endIcon && <span className="ml-1">{endIcon}</span>}
 			</Comp>
 		);
 	},

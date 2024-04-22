@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from "react";
+import { type ButtonHTMLAttributes, forwardRef } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -27,10 +27,10 @@ const iconButtonVariants = cva(
 				error: "",
 			},
 			size: {
-				xs: "p-1 text-md min-w-6 min-h-6 max-w-6 max-h-6 [&>svg]:size-4",
-				sm: "p-1 text-lg min-w-8 min-h-8 max-w-8 max-h-8 [&>svg]:h-5 [&>svg]:w-5",
-				md: "p-2 text-2xl min-w-10 min-h-10 max-w-10 max-h-10 [&>svg]:h-6 [&>svg]:w-6",
-				lg: "p-3 text-3xl min-w-14 min-h-14 max-w-14 max-h-14 [&>svg]:h-7 [&>svg]:w-7",
+				xs: "p-1 text-md min-w-6 min-h-6 max-w-6 max-h-6",
+				sm: "p-1 text-lg min-w-8 min-h-8 max-w-8 max-h-8",
+				md: "p-2 text-2xl min-w-10 min-h-10 max-w-10 max-h-10",
+				lg: "p-3 text-3xl min-w-14 min-h-14 max-w-14 max-h-14",
 			},
 		},
 		compoundVariants: [
