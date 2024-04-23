@@ -25,7 +25,7 @@ import { paths } from "@/theme/routes/paths";
 import UserFilterResult from "../user-table-filter-result";
 import { DensityFeature, useUserColumnDef } from "../user-list-columns-data";
 import { DensityState } from "@/types/tables";
-import { type ITabsOption, Tabs } from "@/components/tabs";
+import { type ITabsOption } from "@/components/tabs";
 import UserTableTabs from "../user-table-tabs";
 
 // ----------------------------------------------------------------------
@@ -85,7 +85,8 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 		}
 	}, [roles, status]);
 
-	const coreRows = table.getCoreRowModel().rows;
+	const statuses = { active: 0, pending: 0, banned: 0, rejected: 0 };
+	const statusCounts = _userList.reduce((acc, row) => ({ ...acc, [row.status]: acc[row.status] + 1 }), statuses);
 
 	const STATUS_OPTIONS: ITabsOption[] = [
 		{
@@ -100,7 +101,7 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 			value: "active",
 			label: "Active",
 			icon: {
-				label: coreRows.filter((row) => row.original.status === "active").length,
+				label: statusCounts.active,
 				color: "success",
 			},
 		},
@@ -108,7 +109,7 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 			value: "pending",
 			label: "Pending",
 			icon: {
-				label: coreRows.filter((row) => row.original.status === "pending").length,
+				label: statusCounts.pending,
 				color: "warning",
 			},
 		},
@@ -116,7 +117,7 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 			value: "banned",
 			label: "Banned",
 			icon: {
-				label: coreRows.filter((row) => row.original.status === "banned").length,
+				label: statusCounts.banned,
 				color: "error",
 			},
 		},
@@ -124,7 +125,7 @@ export default function UserListView({ roles = [], status }: { roles: string[]; 
 			value: "rejected",
 			label: "Rejected",
 			icon: {
-				label: coreRows.filter((row) => row.original.status === "rejected").length,
+				label: statusCounts.rejected,
 			},
 		},
 	];

@@ -43,9 +43,7 @@ export default function NavItem(props: TProps) {
 				)}
 				{!!icon && <span className="icon text-start w-6 h-6 min-w-6 font-medium mr-4 text-inherit">{icon}</span>}
 				<span className="text flex-auto min-w-0">
-					<span className="title capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">
-						{title}
-					</span>
+					<span className="title capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-sm">{title}</span>
 					{caption && (
 						<span className="overflow-hidden block whitespace-nowrap text-ellipsis text-xs text-muted-foreground/60 w-full max-w-full">
 							{caption}
@@ -87,7 +85,7 @@ export default function NavItem(props: TProps) {
 			)}
 
 			<span className="flex-auto min-w-0">
-				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">{title}</span>
+				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-sm">{title}</span>
 				{caption && (
 					<span className="overflow-hidden block whitespace-nowrap text-ellipsis text-xs text-muted-foreground/60 max-w-full">
 						{caption}

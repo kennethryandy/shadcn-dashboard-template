@@ -29,7 +29,7 @@ export default function UserTableToolbar({ table, roles, onSearchRole, canHideCo
 						endIcon={<ChevronDownIcon className="h-4 w-4" />}
 						data-filtered={roles.length > 0}
 						className="border-input/35 w-[calc(50%_-_theme(spacing.2))] md:w-56 data-[filtered=true]:text-popover-foreground justify-between data-[state=open]:ring-2">
-						{roles.length > 0 ? roles.join(", ") : "Role"}
+						<span className="overflow-hidden text-ellipsis">{roles.length > 0 ? roles.join(", ") : "Role"}</span>
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent sideOffset={8} align="center" className="max-h-56 space-y-1.5 max-w-max w-full overflow-auto">

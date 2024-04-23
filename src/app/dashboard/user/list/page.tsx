@@ -22,6 +22,7 @@ interface UserListPageProps {
 export default function UserListPage({ searchParams }: UserListPageProps) {
 	const roles = searchParams?.roles ? searchParams.roles.split(",") : [];
 	const status = searchParams?.status ? searchParams?.status : "all";
+
 	return (
 		<>
 			<Container maxWidth="xl">
@@ -33,9 +34,11 @@ export default function UserListPage({ searchParams }: UserListPageProps) {
 						{ name: "List" },
 					]}
 					action={
-						<Button color="primary" size="sm" startIcon={<PlusIcon />}>
-							New User
-						</Button>
+						<div className="flex items-center gap-2">
+							<Button color="primary" size="sm" startIcon={<PlusIcon />}>
+								New User
+							</Button>
+						</div>
 					}
 				/>
 				<div className="my-20">

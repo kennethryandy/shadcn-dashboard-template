@@ -27,6 +27,8 @@ export default function SettingsDrawer({ children }: SettingsDrawerProps) {
 	const [fullscreen, setFullscreen] = useState(false);
 	const settings = useSettings();
 
+	// console.log(settings);
+
 	const theme = useTheme();
 
 	const onToggleFullScreen = useCallback(() => {

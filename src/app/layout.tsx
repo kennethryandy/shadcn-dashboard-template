@@ -5,6 +5,7 @@ import "./globals.css";
 import Script from "next/script";
 import ProgressBarProvider from "@/components/progress-bar";
 import { Toaster } from "@/components/ui/toaster";
+import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
 	title: "Dashboard Shadnc Template",
@@ -50,9 +51,11 @@ export default function RootLayout({
 				<Script id="color-presets" strategy="beforeInteractive">
 					{`(function() {const preset = JSON.parse(localStorage.getItem("settings"))?.state?.themeColorPresets; if (preset){document.documentElement.setAttribute("data-theme", preset);}})();`}
 				</Script>
-				<ProgressBarProvider>
-					<ThemeProvider attribute="class">{children}</ThemeProvider>
-				</ProgressBarProvider>
+				<ThemeProvider attribute="class">
+					<ProgressBarProvider>
+						<TRPCReactProvider>{children}</TRPCReactProvider>
+					</ProgressBarProvider>
+				</ThemeProvider>
 				<Toaster />
 			</body>
 		</html>

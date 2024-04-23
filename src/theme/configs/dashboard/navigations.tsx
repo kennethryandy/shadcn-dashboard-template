@@ -112,7 +112,7 @@ export const useNavData = () =>
 							{ title: "list", path: paths.dashboard.user.list },
 							{ title: "create", path: paths.dashboard.user.new },
 							{ title: "edit", path: paths.dashboard.user.edit("test") },
-							{ title: "account", path: paths.dashboard.user.account },
+							{ title: "settings", path: paths.dashboard.user.settings },
 						],
 					},
 

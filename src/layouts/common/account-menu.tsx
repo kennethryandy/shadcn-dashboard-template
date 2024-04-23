@@ -2,9 +2,11 @@ import { _mock } from "@/_mock";
 import Avatar from "@/components/avatar";
 import IconButton from "@/components/icon-button/icon-button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { logoutAction } from "@/server/actions/auth.actions";
 import { paths } from "@/theme/routes/paths";
-import { DropdownMenuGroup, DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
+import { useFormStatus } from "react-dom";
 
 // ----------------------------------------------------------------------
 
@@ -55,29 +57,43 @@ export default function AccountMenu() {
 				</IconButton>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent side="bottom" align="end" className="bg-popover/70 backdrop-blur-sm">
-				<DropdownMenuLabel className="px-2 py-4">
-					<h6 className="text-sm font-semibold">{mockUser.displayName}</h6>
-					<p className="text-xs text-gray-400">{mockUser.email}</p>
-				</DropdownMenuLabel>
-				<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
-				{OPTIONS.map((opt) => (
-					<DropdownMenuItem key={opt.label} asChild className="p-0 cursor-pointer hover:bg-common/12">
-						<div className="w-full">
-							<Link
-								href={opt.linkTo}
-								className="relative w-full flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent/10 focus:text-accent-foreground cursor-pointer">
-								{opt.label}
-							</Link>
-						</div>
-					</DropdownMenuItem>
-				))}
-				<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
-				<DropdownMenuItem asChild className="hover:bg-common/12">
-					<Link href="#" className="!text-error font-semibold cursor-pointer">
-						Logout
-					</Link>
-				</DropdownMenuItem>
+				<form action={logoutAction}>
+					<DropdownButtons />
+				</form>
 			</DropdownMenuContent>
 		</DropdownMenu>
+	);
+}
+
+function DropdownButtons() {
+	const { pending } = useFormStatus();
+	return (
+		<>
+			<DropdownMenuLabel className="px-2 py-4">
+				<h6 className="text-sm font-semibold">{mockUser.displayName}</h6>
+				<p className="text-xs text-gray-400">{mockUser.email}</p>
+			</DropdownMenuLabel>
+			<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
+			{OPTIONS.map((opt) => (
+				<DropdownMenuItem disabled={pending} key={opt.label} asChild className="p-0">
+					<div className="w-full">
+						<Link
+							aria-disabled={pending}
+							href={opt.linkTo}
+							className={
+								"relative w-full flex select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-common/12 focus:bg-accent/10 focus:text-accent-foreground cursor-pointer aria-disabled:pointer-events-none aria-disabled:opacity-35"
+							}>
+							{opt.label}
+						</Link>
+					</div>
+				</DropdownMenuItem>
+			))}
+			<DropdownMenuSeparator className="bg-transparent border-b border-dashed border-muted" />
+			<button
+				disabled={pending}
+				className="text-error text-sm text-left px-2 py-1.5 rounded-sm hover:bg-common/12 font-semibold cursor-pointer w-full disabled:pointer-events-none disabled:opacity-35">
+				Logout
+			</button>
+		</>
 	);
 }

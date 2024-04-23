@@ -2,7 +2,6 @@ import { _notifications } from "@/_mock";
 import { BadgeFloat } from "@/components/badge-number";
 import CustomTooltip from "@/components/custom-tooltip";
 import IconButton from "@/components/icon-button/icon-button";
-import Iconify from "@/components/iconify";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { useCallback, useState } from "react";

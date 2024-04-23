@@ -34,10 +34,10 @@ export default function NavItem(props: NavItemProps) {
 					},
 					active ? (!isChild ? "bg-primary/[0.08] text-primary font-bold" : "text-foreground font-bold") : "",
 				)}>
-				{!!icon && <span className="icon transition-colors text-start w-5 h-5 font-medium mr-1.5 text-inherit">{icon}</span>}
+				{!!icon && <span className="icon transition-colors text-start w-5 h-5 font-medium mr-1.5">{icon}</span>}
 
 				<span className="text flex-auto min-w-0">
-					<span className="title transition-colors capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">
+					<span className="title transition-colors text-sm capitalize font-medium text-ellipsis overflow-hidden block w-full text-start">
 						{title}
 					</span>
 				</span>
@@ -69,7 +69,7 @@ export default function NavItem(props: NavItemProps) {
 			{!!icon && <span className="icon text-start w-5 h-5 font-medium mr-1.5 text-inherit">{icon}</span>}
 
 			<span className="flex-auto min-w-0">
-				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-inherit">{title}</span>
+				<span className="capitalize font-medium text-ellipsis overflow-hidden block w-full text-start text-sm">{title}</span>
 			</span>
 
 			{caption && (

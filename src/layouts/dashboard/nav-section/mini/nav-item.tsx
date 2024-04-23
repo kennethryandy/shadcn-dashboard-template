@@ -32,8 +32,8 @@ export default function NavItem(props: NavItemProps) {
 				{!!icon && <span className="icon text-start w-5 h-5 font-medium text-inherit">{icon}</span>}
 
 				<span
-					className={cn("title capitalize text-xs font-medium text-ellipsis overflow-hidden w-full text-center text-inherit mt-1", {
-						"text-start text-sm px-1 flex items-center justify-between": depth !== 1,
+					className={cn("title text-xs capitalize font-medium text-ellipsis overflow-hidden w-full text-center mt-1", {
+						"text-start px-1 flex items-center justify-between": depth !== 1,
 					})}>
 					{title}
 					<ChevronRightIcon width={16} className={cn({ "absolute top-[11px] right-[6px]": depth === 1 })} />
@@ -56,8 +56,8 @@ export default function NavItem(props: NavItemProps) {
 			{!!icon && <span className="icon text-start w-5 h-5 font-medium text-inherit">{icon}</span>}
 
 			<span
-				className={cn("capitalize text-xs font-medium text-ellipsis overflow-hidden block w-full text-center text-inherit mt-1", {
-					"text-start text-sm px-1": depth !== 1,
+				className={cn("capitalize text-xs font-medium text-ellipsis overflow-hidden block w-full text-center mt-1", {
+					"text-start px-1": depth !== 1,
 				})}>
 				{title}
 			</span>

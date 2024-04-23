@@ -1,16 +1,7 @@
 "use client";
 import IconButton from "@/components/icon-button/icon-button";
 import { Button } from "@/components/ui/button";
-import {
-	CommandDialog,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-	CommandSeparator,
-} from "@/components/ui/command";
-import { Input } from "@/components/ui/input";
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "@/components/ui/command";
 import { useBoolean, useEventListener } from "@/hooks";
 import { Search } from "lucide-react";
 import { memo } from "react";

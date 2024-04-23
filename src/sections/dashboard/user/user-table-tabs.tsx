@@ -37,7 +37,7 @@ export default function UserTableTabs<T extends ITabsOption[]>({ value, options,
 						</IconButton>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent sideOffset={8} align="center" className="max-h-56">
-						<DropdownMenuLabel>Columns</DropdownMenuLabel>
+						<DropdownMenuLabel>Visible Columns:</DropdownMenuLabel>
 						{canHideColumns.map((column) => {
 							return (
 								<DropdownMenuCheckboxItem

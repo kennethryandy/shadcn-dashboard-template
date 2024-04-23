@@ -9,7 +9,7 @@ import Header from "../../header";
 import Main from "../../main";
 import NavMiniContent from "../mini/nav-mini-content";
 import NavVerticalContent from "./nav-vertical-content";
-import { useSettings } from "@/components/settings/store";
+// import { useSettings } from "@/components/settings/store";
 
 // ----------------------------------------------------------------------
 interface INavVertialProps {
@@ -19,7 +19,7 @@ interface INavVertialProps {
 }
 
 export default function NavVertical({ children, themeLayout, navData = [] }: INavVertialProps) {
-	const hasHydrated = useSettings((state) => state._hasHydrated);
+	// const hasHydrated = useSettings((state) => state._hasHydrated);
 	const isMini = themeLayout === "mini";
 	const isVertical = themeLayout === "vertical";
 
@@ -56,12 +56,12 @@ export default function NavVertical({ children, themeLayout, navData = [] }: INa
 	}, [isMini, isVertical, setValueExpandex]);
 
 	const renderNavVertical = (
-		<div className={cn("transition-all h-screen z-20 hidden md:block", isOpen ? "min-w-72 w-72" : "min-w-24 w-24")}>
+		<div className={cn("transition-all h-screen z-[50] hidden md:block", isOpen ? "min-w-72 w-72" : "min-w-24 w-24")}>
 			<Button
 				variant="outlined"
 				size="icon"
 				className={cn(
-					"transition-all fixed bg-background border border-border border-opacity-24 dark:border-opacity-36 hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-30",
+					"transition-all fixed bg-background border border-border border-opacity-24 dark:border-opacity-36 hover:bg-background shadow-sm hover:shadow-lg rounded-full w-8 h-8 border-dashed z-[50]",
 					isOpen ? "rotate-0 left-[calc(theme(spacing.72)_-_16px_)] top-6" : "rotate-180 left-[calc(theme(spacing.24)_-_16px_)] top-4",
 					offset && "top-4",
 				)}

@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import DashboardLayout from "@/layouts/dashboard";
+import AuthGuardLayout from "@/layouts/auth/auth-guard";
 
 // ----------------------------------------------------------------------
 interface LayoutProps {
@@ -7,5 +8,9 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-	return <DashboardLayout>{children}</DashboardLayout>;
+	return (
+		<AuthGuardLayout>
+			<DashboardLayout>{children}</DashboardLayout>
+		</AuthGuardLayout>
+	);
 }
