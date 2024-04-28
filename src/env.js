@@ -7,6 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
+    APP_TITLE: z.string().default("Dashboard Shadnc Template"),
     DATABASE_URL: z
       .string()
       .refine(
@@ -16,6 +17,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    APP_KEY: z.string().min(1, "You forgot to add APP_KEY")
   },
 
   /**
@@ -34,6 +36,7 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    APP_KEY: process.env.APP_KEY
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
