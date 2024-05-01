@@ -2,6 +2,7 @@
 
 export { CustomTabs as Tabs } from "./tabs";
 export { CustomTab as Tab } from "./tab";
+export { CustomScrollableTabs as ScrollableTabs } from "./scrollable-tabs";
 
 export interface ITabsOption {
 	value: string;

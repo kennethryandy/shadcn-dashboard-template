@@ -16,10 +16,7 @@ export const lucia = new Lucia(adapter, {
 	},
 });
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
 const userValidate = async () => {
-	await sleep(2000);
 	const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
 
 	if (!sessionId)
