@@ -3,7 +3,7 @@ import { createdAt, deletedAt, id, updatedAt } from ".";
 
 // ----------------------------------------------------------------------
 
-export const projectDetails = pgTable("project-details", {
+export const projectDetails = pgTable("project_details", {
 	id,
 	title: varchar("title").notNull(),
 	name: varchar("name"),

@@ -10,9 +10,7 @@ export const departments = pgTable("departments", {
 	id,
 	department: varchar("department").notNull(),
 	subId: integer("sub_id").notNull(),
-	createdBy: varchar("created_by")
-		.notNull()
-		.references(() => users.id),
+	createdBy: varchar("created_by").notNull(),
 	createdAt,
 	updatedAt,
 	deletedAt,

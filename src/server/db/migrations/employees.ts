@@ -16,10 +16,10 @@ export const employees = pgTable(
 		middleName: varchar("middle_name"),
 		lastName: varchar("last_name").notNull(),
 		workEmail: varchar("work_email").notNull(),
-		company: varchar("company"),
+		companyId: varchar("company_id").notNull(),
 		companyType: varchar("company_type", { enum: ["main contractor", "sub contractor", "client"] }).notNull(),
-		department: varchar("department"),
-		position: varchar("position"),
+		departmentId: varchar("department_id").notNull().references(() => departments.id),
+		positionId: varchar("position_id").notNull().references(() => positions.id),
 		gender: varchar("gender"),
 		country: varchar("country"),
 		nationality: varchar("nationality"),
@@ -43,15 +43,15 @@ export const employees = pgTable(
 
 export const employeesReslations = relations(employees, ({ one }) => ({
 	position: one(positions, {
-		fields: [employees.position],
+		fields: [employees.positionId],
 		references: [positions.id],
 	}),
 	department: one(departments, {
-		fields: [employees.department],
+		fields: [employees.departmentId],
 		references: [departments.id],
 	}),
 	company: one(companies, {
-		fields: [employees.company],
+		fields: [employees.companyId],
 		references: [companies.id],
 	}),
 	user: one(users, {

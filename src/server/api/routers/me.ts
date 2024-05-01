@@ -1,7 +1,8 @@
-import { validateRequest } from "@/lib/auth";
+import { lucia, validateRequest } from "@/lib/auth";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { users, employees } from "@/server/db/schema";
 import { sql } from "drizzle-orm";
+import { cookies } from "next/headers";
 
 export const meRouter = createTRPCRouter({
 	get: publicProcedure.query(async ({ ctx }) => {
@@ -47,6 +48,9 @@ export const meRouter = createTRPCRouter({
 			return user;
 		}
 		return null;
+	}),
+	session: publicProcedure.query(() => {
+		return cookies().get(lucia.sessionCookieName)?.value ?? null;
 	}),
 	sleep: publicProcedure.query(async () => {
 		await new Promise((r) => setTimeout(r, 6000));
