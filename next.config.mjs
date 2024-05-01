@@ -11,7 +11,7 @@ const nextConfig = {
     // optimizeDeps: {
 	// 	exclude: ["oslo"]
 	// },
-    cacheMaxMemorySize: process.env.NODE_ENV === "development" ? 0 : 50 // disable caching on dev
+    // cacheMaxMemorySize: process.env.NODE_ENV === "development" ? 0 : 50 // disable caching on dev
 };
 
 export default nextConfig;
